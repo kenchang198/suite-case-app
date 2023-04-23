@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // 予約TOP
-Route::get('/reserve', function () {
-    return '予約TOP';
-});
+Route::get('/reserve', [\App\Http\Controllers\ReserveController::class, 'top']);
+
+// 予約 利用者情報入力
+Route::post('/reserve/user', [\App\Http\Controllers\ReserveController::class, 'user']);
+
+// 予約 確認画面
+Route::post('/reserve/confirm', [\App\Http\Controllers\ReserveController::class, 'confirm']);
+
+// 予約 完了画面
+Route::post('/reserve/complete', [\App\Http\Controllers\ReserveController::class, 'complete']);
